@@ -1,0 +1,72 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Viaje Invisible del Aire</title>
+<meta name="description" content="9 paradas para entender la contaminación del aire, de la atmósfera al aire interior.">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={darkMode:'media',theme:{extend:{colors:{leaf:'#2e7d5b',deep:'#1d5a42',sky:'#2b78a8'}}}}</script>
+<style>
+#bgl{position:fixed;inset:0;z-index:-1;background-size:cover;background-position:center;transition:opacity .6s}
+#veil{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(242,247,245,.55),rgba(242,247,245,.9))}
+@media(prefers-color-scheme:dark){#veil{background:linear-gradient(180deg,rgba(14,22,25,.65),rgba(14,22,25,.92))}}
+.fade{animation:f .5s}@keyframes f{from{opacity:0;transform:translateY(8px)}}
+nav::-webkit-scrollbar{display:none}
+</style></head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-sans leading-relaxed">
+<div id="bgl"></div><div id="veil"></div>
+<header class="bg-gradient-to-r from-deep/95 to-sky/95 text-white text-center py-6 px-4">
+<h1 class="text-2xl sm:text-3xl font-bold">🌍 El Viaje Invisible del Aire</h1>
+<p class="opacity-90">9 paradas para entender lo que respiramos</p>
+<p class="mt-2 text-sm font-semibold">Autor: Profesor Mario Alberto Jurado Eraso</p>
+<p class="text-sm opacity-90">Curso de Química ambiental · Universidad de Nariño</p></header>
+<nav id="nav" class="sticky top-0 z-10 flex gap-2 overflow-x-auto px-4 py-3 backdrop-blur bg-white/60 dark:bg-slate-900/60"></nav>
+<main class="max-w-4xl mx-auto px-4 pb-12">
+<article id="c" class="fade rounded-2xl overflow-hidden shadow-xl bg-white/95 dark:bg-slate-800/95"></article>
+<div class="flex justify-between mt-4"><button id="pv" class="text-sky font-semibold px-3 py-2">← Anterior</button><button id="nx" class="text-sky font-semibold px-3 py-2">Siguiente →</button></div>
+</main>
+<script>
+const S=[{"t": "Capas de la atmósfera", "q": "¿Por qué la contaminación no se queda donde la producimos?", "txt": "Imagina la Tierra como una casa compartida con varios pisos. Casi todo lo que respiramos y casi toda la contaminación viven en el piso de abajo, la troposfera, donde también se forma el clima. Más arriba, la estratosfera guarda la capa de ozono, que funciona como un protector solar. Como no hay paredes entre pisos ni entre países, lo que se emite en una ciudad puede viajar y afectar a otra."}, {"t": "Inversión térmica", "q": "¿Por qué en algunas mañanas de invierno la ciudad amanece envuelta en humo?", "txt": "Normalmente el aire cálido sube y se lleva los humos. Pero en una inversión térmica una capa de aire tibio se coloca sobre aire frío, como la tapa de una olla. Los gases quedan atrapados abajo y se acumulan. Es frecuente en valles rodeados de montañas, en noches despejadas y sin viento. Cuando el sol calienta el suelo, la tapa se rompe y el aire por fin respira."}, {"t": "Viento y dispersión", "q": "¿Cómo decide el viento hacia dónde va la contaminación?", "txt": "Piensa en el penacho de una chimenea como un río de tinta invisible. El viento lo empuja y lo estira; la turbulencia lo mezcla con aire limpio y lo diluye. Con viento fuerte la tinta se dispersa rápido; con calma, se queda concentrada cerca de la fuente. Por eso los ingenieros miden la dirección y velocidad del viento antes de decidir dónde ubicar una industria o una estación de monitoreo."}, {"t": "Fuentes y sumideros", "q": "¿De dónde viene la contaminación y adónde va?", "txt": "Las fuentes son los lugares donde se emiten contaminantes: tubos de escape, fábricas, quemas, cocinas de leña, pero también volcanes e incendios naturales. Los sumideros son los que los retiran: la lluvia que los lava, los bosques que absorben gases y los océanos que disuelven CO₂. Cuando emitimos más de lo que el planeta puede absorber, el exceso se acumula, como un planeta con fiebre."}, {"t": "Lluvia ácida", "q": "¿Puede la lluvia ser dañina?", "txt": "Las chimeneas y los motores liberan dióxido de azufre y óxidos de nitrógeno. En el aire y dentro de las nubes reaccionan con agua y oxígeno, como una cocina química en el cielo, y forman ácidos débiles. Al caer como lluvia, la nieve o la niebla, acidifican lagos y suelos, dañan bosques y corroen monumentos de piedra caliza. El viento puede llevarla a cientos de kilómetros de su origen."}, {"t": "Monitoreo y muestreo", "q": "¿Cómo sabemos cuánta contaminación hay si no la vemos?", "txt": "Medimos el aire como un médico toma signos vitales. El muestreador de alto volumen (Hi-Vol) aspira aire y atrapa partículas en un filtro que luego se pesa. El burbujeo hace pasar el aire por un líquido que captura gases como el SO₂. El muestreo isocinético toma muestras dentro de la chimenea a la misma velocidad del flujo, para que la muestra sea representativa."}, {"t": "Índice de Calidad del Aire", "q": "¿Cómo se convierte una medición en un semáforo fácil de entender?", "txt": "El ICA traduce concentraciones en un número de 0 a 500 con colores. Para cada contaminante se ubica la concentración entre dos puntos de corte y se interpola entre ellos. Ejemplo: si PM2.5 mide 40 µg/m³ y ese tramo va de 35,5 a 55,4 (ICA 101 a 150), el resultado es cerca de 116: naranja, dañino para grupos sensibles. El ICA final es el mayor de todos los contaminantes."}, {"t": "Control industrial", "q": "¿Cómo evita una fábrica soltar todo lo que produce?", "txt": "Son los súper escudos de la chimenea. El ciclón hace girar el gas y lanza las partículas pesadas contra la pared, como una centrifugadora. El filtro de mangas es un gran aspirador de tela que retiene el polvo fino. El scrubber o lavador de gases rocía agua o líquidos que disuelven gases como el SO₂. Cada equipo se elige según el tipo y tamaño del contaminante."}, {"t": "Aire interior (IAQ)", "q": "¿Está más limpio el aire dentro de casa que afuera?", "txt": "No siempre. Pasamos casi todo el día en interiores, donde pinturas, muebles y productos de limpieza liberan compuestos orgánicos volátiles (COV) y formaldehído. El radón, un gas natural del suelo, puede filtrarse por grietas en la cimentación. Sin ventilación se acumulan. La solución más simple es abrir ventanas, usar extractores, mantener limpios los filtros y evitar fuentes innecesarias."}];let i=0;const $=id=>document.getElementById(id);
+$('nav').innerHTML=S.map((s,k)=>`<button onclick="go(${k})" class="shrink-0 rounded-full border-2 border-leaf px-3 py-1 font-semibold text-deep dark:text-emerald-300 whitespace-nowrap">${k+1}. ${s.t}</button>`).join('');
+function go(k,push=true){i=Math.max(0,Math.min(S.length-1,k));const s=S[i],n=i+1;
+if(push)history.replaceState(null,'','#'+n);
+[...$('nav').children].forEach((b,j)=>{b.classList.toggle('bg-leaf',j==i);b.classList.toggle('text-white',j==i)});
+$('bgl').style.backgroundImage=`url(assets/bg/fondo-${n}.jpg)`;
+$('c').classList.remove('fade');void $('c').offsetWidth;$('c').classList.add('fade');
+$('c').innerHTML=`<div class="px-5 pt-5"><p class="text-xs font-bold uppercase tracking-widest text-sky">Parada ${n} de ${S.length} · ${s.t}</p>
+<h2 class="text-xl sm:text-2xl font-bold text-deep dark:text-emerald-300">${s.q}</h2></div>
+<div id="vw" class="relative mt-3 bg-slate-200 dark:bg-slate-700 overflow-hidden select-none" style="height:min(75vh,720px);cursor:grab">
+<div id="st" class="absolute inset-0" style="transform-origin:0 0"><img id="im" draggable="false" src="assets/img/parada-${n}.jpg" alt="Infografía: ${s.t}" class="w-full h-full object-contain pointer-events-none" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'p-16 text-center text-slate-500',textContent:'Imagen no disponible'}))"></div>
+<div class="absolute top-2 right-2 flex gap-1 z-10">
+<button id="zo" title="Alejar" class="w-10 h-10 rounded-lg bg-white/90 dark:bg-slate-900/90 text-deep dark:text-emerald-300 text-xl font-bold shadow">−</button>
+<button id="zi" title="Acercar" class="w-10 h-10 rounded-lg bg-white/90 dark:bg-slate-900/90 text-deep dark:text-emerald-300 text-xl font-bold shadow">+</button>
+<button id="zr" title="Restablecer" class="w-10 h-10 rounded-lg bg-white/90 dark:bg-slate-900/90 text-deep dark:text-emerald-300 shadow">⟲</button>
+<button id="zf" title="Pantalla completa" class="w-10 h-10 rounded-lg bg-white/90 dark:bg-slate-900/90 text-deep dark:text-emerald-300 shadow">⛶</button></div>
+<span id="zl" class="absolute bottom-2 left-2 text-[11px] sm:text-xs bg-white/85 dark:bg-slate-900/85 rounded px-2 py-1 shadow">100% · rueda/pellizca: zoom · arrastra: mover</span></div>
+<div class="p-5"><p class="text-lg">${s.txt}</p>
+<audio controls preload="none" src="assets/audio/parada-${n}.mp3" class="w-full mt-4"></audio></div>`;
+viewer();$('nav').children[i].scrollIntoView({inline:'center',block:'nearest'});scrollTo(0,0)}
+
+function viewer(){const vw=$('vw'),st=$('st');let sc=1,x=0,y=0;const P=new Map();let d0=0,s0=1;
+const clamp=()=>{const W=vw.clientWidth,H=vw.clientHeight;x=Math.min(0,Math.max(W*(1-sc),x));y=Math.min(0,Math.max(H*(1-sc),y))};
+const ap=()=>{clamp();st.style.transform=`translate(${x}px,${y}px) scale(${sc})`;$('zl').textContent=Math.round(sc*100)+'% · rueda/pellizca: zoom · arrastra: mover'};
+const zoom=(f,cx,cy)=>{const n=Math.min(8,Math.max(1,sc*f));const r=n/sc;const W=vw.clientWidth,H=vw.clientHeight;cx=cx??W/2;cy=cy??H/2;x=cx-(cx-x)*r;y=cy-(cy-y)*r;sc=n;ap()};
+const pt=e=>{const b=vw.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+$('zi').onclick=()=>zoom(1.4);$('zo').onclick=()=>zoom(1/1.4);$('zr').onclick=()=>{sc=1;x=y=0;ap()};
+$('zf').onclick=()=>document.fullscreenElement?document.exitFullscreen():vw.requestFullscreen?.();
+vw.onwheel=e=>{e.preventDefault();const[a,b]=pt(e);zoom(e.deltaY<0?1.15:1/1.15,a,b)};
+vw.ondblclick=e=>{if(e.target.closest('button'))return;const[a,b]=pt(e);sc>1?(sc=1,x=y=0,ap()):zoom(2.5,a,b)};
+vw.onpointerdown=e=>{if(e.pointerType=='touch'||e.target.closest('button'))return;vw.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);vw.style.cursor='grabbing'};
+vw.onpointermove=e=>{if(!P.has(e.pointerId))return;const o=P.get(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);x+=e.clientX-o[0];y+=e.clientY-o[1];ap()};
+vw.onpointerup=vw.onpointercancel=e=>{P.delete(e.pointerId);vw.style.cursor='grab'};
+let T=null,lt=0;const tp=t=>{const b=vw.getBoundingClientRect();return[t.clientX-b.left,t.clientY-b.top]};
+vw.addEventListener('touchstart',e=>{if(e.target.closest('button'))return;const t=e.touches;
+if(t.length==2){d0=Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);s0=sc;T=null}
+else if(t.length==1){T=[t[0].clientX,t[0].clientY];const n=Date.now();if(n-lt<300){const[a,b]=tp(t[0]);sc>1?(sc=1,x=y=0,ap()):zoom(2.5,a,b);e.preventDefault()}lt=n}},{passive:false});
+vw.addEventListener('touchmove',e=>{const t=e.touches;
+if(t.length==2){e.preventDefault();const b=vw.getBoundingClientRect();zoom(s0*Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY)/d0/sc,(t[0].clientX+t[1].clientX)/2-b.left,(t[0].clientY+t[1].clientY)/2-b.top)}
+else if(t.length==1&&T&&sc>1){e.preventDefault();x+=t[0].clientX-T[0];y+=t[0].clientY-T[1];T=[t[0].clientX,t[0].clientY];ap()}},{passive:false});
+vw.addEventListener('touchend',e=>{T=e.touches.length==1?[e.touches[0].clientX,e.touches[0].clientY]:null});
+if(!vw.requestFullscreen)$('zf').remove();
+document.onfullscreenchange=()=>{vw.style.height=document.fullscreenElement?'100vh':'min(75vh,720px)';ap()}}
+$('pv').onclick=()=>go(i-1);$('nx').onclick=()=>go(i+1);
+onkeydown=e=>{if(e.key=='ArrowLeft')go(i-1);if(e.key=='ArrowRight')go(i+1)};
+go((parseInt(location.hash.slice(1))||1)-1);
+</script></body></html>
